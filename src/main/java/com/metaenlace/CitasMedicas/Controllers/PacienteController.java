@@ -1,6 +1,5 @@
 package com.metaenlace.CitasMedicas.Controllers;
 
-
 import com.metaenlace.CitasMedicas.DTO.PacienteDTO;
 import com.metaenlace.CitasMedicas.Entities.Paciente;
 import com.metaenlace.CitasMedicas.Services.PacienteService;
@@ -21,7 +20,7 @@ public class PacienteController {
     public List<PacienteDTO> listadoPacientes() {
         List<Paciente> pacientes = pacienteService.listadoPacientes();
         List<PacienteDTO> pacientesDTO = new ArrayList<>();
-        for (Paciente pac : pacientes){
+        for (Paciente pac : pacientes) {
             pacientesDTO.add(new PacienteDTO(pac.getNSS(), pac.getNumTarjeta(), pac.getTelefono(), pac.getDireccion()));
         }
         return pacientesDTO;

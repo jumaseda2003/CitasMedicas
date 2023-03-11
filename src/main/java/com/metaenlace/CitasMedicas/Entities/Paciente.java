@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name="paciente")
 @AllArgsConstructor
+
 @PrimaryKeyJoinColumn(referencedColumnName = "id")
 public class Paciente extends Usuario {
 
@@ -25,6 +26,7 @@ public class Paciente extends Usuario {
     @Column(name = "Direccion", nullable = false, unique = false)
     private String direccion;
     /*
+
     @OneToMany(mappedBy = "id")
     private List<Cita> citas;
 

@@ -13,9 +13,10 @@ import java.util.List;
 @Table(name = "medico")
 @NoArgsConstructor
 @AllArgsConstructor
-@PrimaryKeyJoinColumn(referencedColumnName = "id")
-public class Medico extends Usuario{
 
+@PrimaryKeyJoinColumn(referencedColumnName = "id")
+
+public class Medico extends Usuario{
     @Column(name = "numColegiado", nullable = false, unique = true)
     private String numColegiado;
 /*
@@ -25,4 +26,6 @@ public class Medico extends Usuario{
 
     @ManyToMany(mappedBy = "id")
     private List<Paciente> pacientes;*/
+    @ManyToMany
+    private List<Paciente> pacientes;
 }

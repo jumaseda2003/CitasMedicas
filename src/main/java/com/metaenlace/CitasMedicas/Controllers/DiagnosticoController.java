@@ -32,6 +32,7 @@ public class DiagnosticoController {
     @GetMapping("/{id}")
     public ResponseEntity<DiagnosticoDTO> findDiagById(@PathVariable(value = "id") Long id) {
         Optional<Diagnostico> diagnosticos = Optional.ofNullable(diagnosticoService.findDiagById(id));
+
         if (diagnosticos.isPresent()) {
             Diagnostico diag = diagnosticos.get();
             DiagnosticoDTO diagnosticoDTO = new DiagnosticoDTO(diag.getId(), diag.getValoracionEspecialista(), diag.getEnfermedad());
@@ -46,6 +47,7 @@ public class DiagnosticoController {
     public void saveDiag(@RequestBody Diagnostico diag) {
         diagnosticoService.saveDiag(diag);
     }
+
 
     @DeleteMapping("/delete/{id}")
     public void deleteDiag(@PathVariable long id) { diagnosticoService.deleteDiagById(id);}

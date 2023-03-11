@@ -1,13 +1,15 @@
 package com.metaenlace.CitasMedicas.Controllers;
 
 import com.metaenlace.CitasMedicas.DTO.UsuarioDTO;
-import com.metaenlace.CitasMedicas.Entities.Paciente;
+
 import com.metaenlace.CitasMedicas.Entities.Usuario;
 import com.metaenlace.CitasMedicas.Services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.ArrayList;
+
 import java.util.List;
 
 @RestController

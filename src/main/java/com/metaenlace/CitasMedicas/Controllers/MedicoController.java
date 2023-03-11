@@ -1,10 +1,13 @@
 package com.metaenlace.CitasMedicas.Controllers;
 
+
 import com.metaenlace.CitasMedicas.DTO.MedicoDTO;
+
 import com.metaenlace.CitasMedicas.Entities.Medico;
 import com.metaenlace.CitasMedicas.Services.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.ArrayList;
 import java.util.List;

@@ -23,4 +23,8 @@ public class Diagnostico {
 
     @Column(name = "enfermedad", nullable = false, unique = false)
     private String enfermedad;
+
+    /*
+    @OneToOne
+    private Cita cita;*/
 }

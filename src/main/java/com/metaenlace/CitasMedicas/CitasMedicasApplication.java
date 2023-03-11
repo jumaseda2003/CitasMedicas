@@ -2,13 +2,14 @@ package com.metaenlace.CitasMedicas;
 
 import com.metaenlace.CitasMedicas.Entities.Cita;
 import com.metaenlace.CitasMedicas.Entities.Diagnostico;
+
 import com.metaenlace.CitasMedicas.Entities.Medico;
 import com.metaenlace.CitasMedicas.Entities.Paciente;
 import com.metaenlace.CitasMedicas.Repositories.CitaRepository;
 import com.metaenlace.CitasMedicas.Repositories.DiagnosticoRepository;
 import com.metaenlace.CitasMedicas.Repositories.MedicoRepository;
 import com.metaenlace.CitasMedicas.Repositories.PacienteRepository;
-import com.metaenlace.CitasMedicas.Services.CitaService;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,11 +26,12 @@ public class CitasMedicasApplication {
 	}
 
 	@Bean
+
 	CommandLineRunner commandLineRunner(CitaRepository citaRepository, DiagnosticoRepository diagnosticoRepository, MedicoRepository mr, PacienteRepository pr){
 		return args->{
 			Cita cita=new Cita();
 			cita.setFechaHora(LocalDate.now());
-			cita.setMotivoCita("Operacion");
+			cita.setMotivoCita("operacion");
 			cita.setAttribute11(111);
 			Diagnostico dia=new Diagnostico();
 			dia.setValoracionEspecialista("leve");
@@ -61,7 +63,5 @@ public class CitasMedicasApplication {
 			paciente.setClave("1234");
 			pr.save(paciente);
 		};
-
 	}
-
 }
