@@ -15,17 +15,16 @@ import java.util.List;
 @AllArgsConstructor
 
 @PrimaryKeyJoinColumn(referencedColumnName = "id")
-
 public class Medico extends Usuario{
     @Column(name = "numColegiado", nullable = false, unique = true)
     private String numColegiado;
-/*
-    @OneToMany(mappedBy = "id")
-    @ElementCollection
+
+    @OneToMany(mappedBy = "medico")
     private List<Cita> citas;
 
-    @ManyToMany(mappedBy = "id")
-    private List<Paciente> pacientes;*/
+    @JoinTable(name="medico_pacientes",
+            joinColumns = {@JoinColumn(name="medico_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name="paciente_id", referencedColumnName = "id")})
     @ManyToMany
     private List<Paciente> pacientes;
 }

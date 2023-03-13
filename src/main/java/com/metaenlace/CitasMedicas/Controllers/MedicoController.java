@@ -20,19 +20,14 @@ public class MedicoController {
     private MedicoService ms;
     @GetMapping("/all")
     public List<MedicoDTO> listadoMedicos() {
-        List<Medico> medicos = ms.listadoMedicos();
-        List<MedicoDTO> medicosDTO = new ArrayList<>();
-        for (Medico medico : medicos){
-            medicosDTO.add(new MedicoDTO(medico.getNumColegiado()));
-        }
-        return medicosDTO;
+        return ms.listadoMedicos();
     }
     @GetMapping("/{id}")
-    public Optional<Medico> findMedById(@PathVariable long id) { return ms.findMedById(id); }
+    public MedicoDTO findMedById(@PathVariable long id) { return ms.findMedById(id); }
 
-    @DeleteMapping("/{id}/delete")
+    @DeleteMapping("/delete/{id}")
     public void deleteMedico(@PathVariable long id) { ms.deleteMedById(id); }
 
     @PostMapping("/{id}/save")
-    public void saveMedico(Medico med){ ms.saveMed(med); }
+    public void saveMedico(MedicoDTO med){ ms.saveMed(med); }
 }

@@ -32,9 +32,9 @@ public class Cita {
     @JoinColumn(name = "id_diagnostico", referencedColumnName = "id")
     private Diagnostico diagnostico;
 
-/*    @OneToOne
+   @OneToOne
     private Paciente paciente;
 
     @OneToOne
-    private Medico medico;*/
+    private Medico medico;
 }

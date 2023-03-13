@@ -18,16 +18,11 @@ public class PacienteController {
 
     @GetMapping("/all")
     public List<PacienteDTO> listadoPacientes() {
-        List<Paciente> pacientes = pacienteService.listadoPacientes();
-        List<PacienteDTO> pacientesDTO = new ArrayList<>();
-        for (Paciente pac : pacientes) {
-            pacientesDTO.add(new PacienteDTO(pac.getNSS(), pac.getNumTarjeta(), pac.getTelefono(), pac.getDireccion()));
-        }
-        return pacientesDTO;
+        return pacienteService.listadoPacientes();
     }
 
     @GetMapping("/{idPac}")
-    public Paciente findPacById(@PathVariable long idPac) {
+    public PacienteDTO findPacById(@PathVariable long idPac) {
         return pacienteService.findPacById(idPac);
     }
 
@@ -37,7 +32,7 @@ public class PacienteController {
     }
 
     @PostMapping("/save")
-    public void savePacById(@RequestBody Paciente pac) {
+    public void savePacById(@RequestBody PacienteDTO pac) {
         pacienteService.savePacById(pac);
     }
 }

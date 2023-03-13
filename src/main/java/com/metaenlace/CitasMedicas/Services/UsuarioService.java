@@ -1,15 +1,16 @@
 package com.metaenlace.CitasMedicas.Services;
 
+import com.metaenlace.CitasMedicas.DTO.UsuarioDTO;
 import com.metaenlace.CitasMedicas.Entities.Usuario;
 
 import java.util.List;
 
 public interface UsuarioService {
-    List<Usuario> listadoUsuarios();
+    List<UsuarioDTO> listadoUsuarios();
 
-    Usuario findUsuByid(long id);
+    UsuarioDTO findUsuByid(long id);
 
     void deleteUsuById(long id);
-    void saveUsu(Usuario usu);
+    void saveUsu(UsuarioDTO usu);
 }
 

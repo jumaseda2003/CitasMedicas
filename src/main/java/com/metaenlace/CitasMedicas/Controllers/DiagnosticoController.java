@@ -20,36 +20,22 @@ public class DiagnosticoController {
 
     @GetMapping("/all")
     public List<DiagnosticoDTO> listadoDiagnosticos() {
-        List<Diagnostico> diagnosticos = diagnosticoService.listadoDiagnosticos();
-        List<DiagnosticoDTO> diagnosticosDTO = new ArrayList<>();
-
-        for (Diagnostico diagnostico : diagnosticos) {
-            diagnosticosDTO.add(new DiagnosticoDTO(diagnostico.getId(), diagnostico.getValoracionEspecialista(), diagnostico.getEnfermedad()));
-        }
-        return diagnosticosDTO;
+        return diagnosticoService.listadoDiagnosticos();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DiagnosticoDTO> findDiagById(@PathVariable(value = "id") Long id) {
-        Optional<Diagnostico> diagnosticos = Optional.ofNullable(diagnosticoService.findDiagById(id));
-
-        if (diagnosticos.isPresent()) {
-            Diagnostico diag = diagnosticos.get();
-            DiagnosticoDTO diagnosticoDTO = new DiagnosticoDTO(diag.getId(), diag.getValoracionEspecialista(), diag.getEnfermedad());
-            return ResponseEntity.ok().body(diagnosticoDTO);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public DiagnosticoDTO findDiagById(@PathVariable(value = "id") Long id) {
+        return diagnosticoService.findDiagById(id);
     }
 
 
     @PostMapping("/save/{id}")
-    public void saveDiag(@RequestBody Diagnostico diag) {
+    public void saveDiag(@RequestBody DiagnosticoDTO diag) {
         diagnosticoService.saveDiag(diag);
     }
 
 
     @DeleteMapping("/delete/{id}")
-    public void deleteDiag(@PathVariable long id) { diagnosticoService.deleteDiagById(id);}
+    public void deleteDiag(@PathVariable long id) { diagnosticoService.deleteDiag(id);}
 }
 

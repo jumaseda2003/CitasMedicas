@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "/citas")
@@ -19,19 +20,18 @@ public class CitaController {
 
     @GetMapping("/all")
     public List<CitaDTO> listadoCitas(){
-        List<Cita> citas = citaService.listadoCitas();
-        List<CitaDTO> citasDTO = new ArrayList<>();
-        for (Cita cita : citas) {
-            citasDTO.add(new CitaDTO(cita.getId(), cita.getFechaHora(), cita.getMotivoCita(), cita.getAttribute11(), cita.getDiagnostico()));
-        }
-        return citasDTO;
+        return citaService.listadoCitas();
     }
     @GetMapping("/{id}")
-    public Optional<Cita> findCitaById(@PathVariable long id){ return citaService.findCitaById(id);}
-    @PostMapping("/all")
-    public Cita saveCita(@RequestBody Cita cita) { return citaService.saveCita(cita);}
-    @DeleteMapping("/all")
-    public void deleteCita(@RequestBody long id) {
+    public CitaDTO findCitaById(@PathVariable long id){
+        return citaService.findCitaById(id);
+    }
+    @PostMapping("/save")
+    public void saveCita(@RequestBody CitaDTO cita) {
+        citaService.saveCita(cita);
+    }
+    @DeleteMapping("/delete/{id}")
+    public void deleteCita(@PathVariable long id) {
         citaService.deleteCita(id);
     }
 }

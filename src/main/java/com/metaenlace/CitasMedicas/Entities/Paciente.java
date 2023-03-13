@@ -25,11 +25,11 @@ public class Paciente extends Usuario {
     private String telefono;
     @Column(name = "Direccion", nullable = false, unique = false)
     private String direccion;
-    /*
 
-    @OneToMany(mappedBy = "id")
+
+    @OneToMany(mappedBy = "paciente")
     private List<Cita> citas;
 
-    @OneToMany(mappedBy = "id")
-    private List<Medico> medicos;*/
+    @ManyToMany(mappedBy = "pacientes")
+    private List<Medico> medicos;
 }
