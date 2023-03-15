@@ -16,12 +16,19 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_user")
     private long id;
 
-    @Column(name = "nombre", nullable = false, unique = false )
+    @Column(name = "nombre", nullable = false)
     private String nombre;
-    @Column(name = "apellidos", nullable = false, unique = false )
+    @Column(name = "apellidos", nullable = false)
     private String apellidos;
-    @Column(name = "usuario", nullable = false, unique = false )
+    @Column(name = "usuario", nullable = false)
     private String usuario;
-    @Column(name = "clave", nullable = false, unique = false )
+    @Column(name = "clave", nullable = false)
     private String clave;
+
+    public Usuario(String nombre, String apellidos, String usuario, String clave) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.usuario = usuario;
+        this.clave = clave;
+    }
 }

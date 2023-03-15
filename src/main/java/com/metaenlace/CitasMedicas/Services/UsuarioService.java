@@ -11,6 +11,6 @@ public interface UsuarioService {
     UsuarioDTO findUsuByid(long id);
 
     void deleteUsuById(long id);
-    void saveUsu(UsuarioDTO usu);
+    UsuarioDTO saveUsu(Usuario usu);
 }
 

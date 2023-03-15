@@ -6,7 +6,6 @@ import com.metaenlace.CitasMedicas.Services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -32,7 +31,7 @@ public class PacienteController {
     }
 
     @PostMapping("/save")
-    public void savePacById(@RequestBody PacienteDTO pac) {
-        pacienteService.savePacById(pac);
+    public PacienteDTO savePacById(@RequestBody Paciente pac) {
+        return pacienteService.savePacById(pac);
     }
 }

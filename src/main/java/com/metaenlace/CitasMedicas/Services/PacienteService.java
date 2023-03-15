@@ -9,5 +9,5 @@ public interface PacienteService {
     List<PacienteDTO> listadoPacientes();
     PacienteDTO findPacById(long id);
     void deletePacById(long id);
-    void savePacById(PacienteDTO pac);
+    PacienteDTO savePacById(Paciente pac);
 }

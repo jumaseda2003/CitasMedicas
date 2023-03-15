@@ -4,12 +4,9 @@ import com.metaenlace.CitasMedicas.DTO.DiagnosticoDTO;
 import com.metaenlace.CitasMedicas.Entities.Diagnostico;
 import com.metaenlace.CitasMedicas.Services.DiagnosticoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -29,13 +26,13 @@ public class DiagnosticoController {
     }
 
 
-    @PostMapping("/save/{id}")
-    public void saveDiag(@RequestBody DiagnosticoDTO diag) {
-        diagnosticoService.saveDiag(diag);
+    @PostMapping("/save")
+    public DiagnosticoDTO saveDiag(@RequestBody Diagnostico diag) {
+        return diagnosticoService.saveDiag(diag);
     }
 
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteDiag(@PathVariable long id) { diagnosticoService.deleteDiag(id);}
 }
 

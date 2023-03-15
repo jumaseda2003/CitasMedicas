@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DiagnosticoDTO {
-    private long id;
+public class DiagnosticoCortoDTO {
+    private Long id;
     private String valoracionEspecialista;
     private String enfermedad;
-    private CitaCortaDTO cita;
 }

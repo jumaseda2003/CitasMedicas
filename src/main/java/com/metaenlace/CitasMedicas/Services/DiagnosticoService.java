@@ -9,5 +9,5 @@ public interface DiagnosticoService {
     List<DiagnosticoDTO> listadoDiagnosticos();
     DiagnosticoDTO findDiagById(long id);
     void deleteDiag(long id);
-    void saveDiag(DiagnosticoDTO diag);
+    DiagnosticoDTO saveDiag(Diagnostico diag);
 }

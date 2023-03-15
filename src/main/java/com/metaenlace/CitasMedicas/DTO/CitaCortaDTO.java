@@ -7,15 +7,10 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class CitaDTO {
-    private long id;
+@AllArgsConstructor
+public class CitaCortaDTO {
+    private Long id;
     private LocalDate fecha;
     private String motivoCita;
-    private int attribute11;
-    private PacienteDTO pacienteDTO;
-    private MedicoCortoDTO medicoCortoDTO;
-    private DiagnosticoCortoDTO diagnostico;
-
 }

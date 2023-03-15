@@ -3,41 +3,60 @@ package com.metaenlace.CitasMedicas.Services;
 import com.metaenlace.CitasMedicas.DTO.UsuarioDTO;
 import com.metaenlace.CitasMedicas.Entities.Usuario;
 import com.metaenlace.CitasMedicas.Repositories.UsuarioRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    private final ModelMapper mapper = new ModelMapper();
+
+    private UsuarioDTO convertDTO(Usuario usu){
+        return mapper.map(usu, UsuarioDTO.class);
+    }
+
     @Override
     @Transactional(readOnly = true)
     public List<UsuarioDTO> listadoUsuarios() {
         List<Usuario> usuarios = usuarioRepository.findAll();
-        return usuarios.stream().map(usuario -> new UsuarioDTO(usuario.getId(), usuario.getUsuario(), usuario.getClave(), usuario.getNombre(), usuario.getApellidos())).collect(Collectors.toList());
+        List<UsuarioDTO> usuarioDTOList = new LinkedList<>();
+        for (Usuario usu : usuarios){
+            usuarioDTOList.add(convertDTO(usu));
+        }
+        return usuarioDTOList;
     }
 
     @Override
     @Transactional(readOnly = true)
     public UsuarioDTO findUsuByid(long id) {
-        Optional<Usuario> usu = usuarioRepository.findById(id);
-        return usu.map(usuario -> new UsuarioDTO(usuario.getId(), usuario.getUsuario(), usuario.getClave(), usuario.getNombre(), usuario.getApellidos())).orElse(null);
+        Usuario usu = usuarioRepository.findById(id).orElse(null);
+        if (usu == null) {
+            throw new RuntimeException("Usuario no encontrado");
+        } else {
+            return convertDTO(usu);
+        }
     }
 
     @Override
     @Transactional
     public void deleteUsuById(long id) {
-        usuarioRepository.deleteById(id);
+        if (usuarioRepository.existsById(id)) {
+            usuarioRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Usuario no encontrado");
+        }
     }
 
     @Override
-    @Transactional
-    public void saveUsu(UsuarioDTO usuario) {
+    public UsuarioDTO saveUsu(Usuario usuario) {
         usuarioRepository.save(usuario);
+        return convertDTO(usuario);
     }
 }

@@ -4,7 +4,6 @@ import com.metaenlace.CitasMedicas.DTO.CitaDTO;
 import com.metaenlace.CitasMedicas.Entities.Cita;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CitaService {
     List<CitaDTO> listadoCitas();
@@ -14,5 +13,5 @@ public interface CitaService {
     */
     CitaDTO findCitaById(long id);
     void deleteCita(long id);
-    void saveCita(CitaDTO cita);
+    CitaDTO saveCita(Cita cita);
 }

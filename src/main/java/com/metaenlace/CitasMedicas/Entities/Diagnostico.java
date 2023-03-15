@@ -21,9 +21,15 @@ public class Diagnostico {
     @Column(name = "valoracionEspecialista", nullable = false, unique = true)
     private String valoracionEspecialista;
 
-    @Column(name = "enfermedad", nullable = false, unique = false)
+    @Column(name = "enfermedad", nullable = false)
     private String enfermedad;
 
-    @OneToOne
+    @OneToOne(mappedBy = "diagnostico")
     private Cita cita;
+
+    public Diagnostico(String valoracionEspecialista, String enfermedad, Cita cita) {
+        this.valoracionEspecialista = valoracionEspecialista;
+        this.enfermedad = enfermedad;
+        this.cita = cita;
+    }
 }

@@ -15,26 +15,26 @@ import java.time.LocalDate;
 public class Cita {
     @Column(name = "id", nullable = false, unique = true)
     @Id
-    @SequenceGenerator(name = "citaSecuencia", sequenceName = "citaSecuencia", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "citaSecuencia")
     private long id;
-    @Column(name = "fechaHora", nullable = false, unique = true)
-    private LocalDate fechaHora;
+    @Column(name = "fecha", nullable = false, unique = true)
+    private LocalDate fecha;
 
-    @Column(name = "motivoCita", nullable = false, unique = false)
+    @Column(name = "motivoCita", nullable = false)
     private String motivoCita;
 
-    @Column(name = "attribute11", nullable = false, unique = false)
+    @Column(name = "attribute11", nullable = false)
     private int attribute11;
 
 
-    @OneToOne(optional = true, cascade = CascadeType.MERGE)
+    @OneToOne(optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_diagnostico", referencedColumnName = "id")
     private Diagnostico diagnostico;
 
-   @OneToOne
+    @OneToOne
+    @JoinColumn(name = "id_paciente")
     private Paciente paciente;
 
     @OneToOne
+    @JoinColumn(name = "id_medico")
     private Medico medico;
 }
