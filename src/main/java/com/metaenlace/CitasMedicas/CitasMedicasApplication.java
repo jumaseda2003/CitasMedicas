@@ -22,7 +22,6 @@ public class CitasMedicasApplication {
 	}
 
 	@Bean
-
 	CommandLineRunner commandLineRunner(CitaRepository citaRepository, DiagnosticoRepository diagnosticoRepository, MedicoRepository mr, PacienteRepository pr){
 		return args->{
 			Cita cita=new Cita();
@@ -36,7 +35,7 @@ public class CitasMedicasApplication {
 			medico.setNombre("Javier");
 			medico.setApellidos("Martinez");
 			medico.setUsuario("javi");
-			medico.setClave("1234");
+			medico.setClave("$2a$10$XE0BX9FMB2gnkY1l6FxLJuftm3ARsFKC4IX0oW8SClG6M/NnF0bcS");
 			mr.save(medico);
 
 			Paciente paciente = new Paciente();
@@ -47,7 +46,7 @@ public class CitasMedicasApplication {
 			paciente.setNombre("Pepe");
 			paciente.setApellidos("Perez");
 			paciente.setUsuario("pepito");
-			paciente.setClave("1234");
+			paciente.setClave("$2a$10$XE0BX9FMB2gnkY1l6FxLJuftm3ARsFKC4IX0oW8SClG6M/NnF0bcS");
 			pr.save(paciente);
 		};
 	}
